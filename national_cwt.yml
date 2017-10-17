@@ -3,7 +3,7 @@
   canonical_name: two_week_wait_from_gp_urgent_referral_to_first_consultant_appointment
   filename_pattern: !ruby/regexp /.*/i
   tablename_pattern: !ruby/regexp /Data/i
-  header_lines: 4
+  header_lines: 1
   footer_lines: 0
   klass: MongoDbRecord
   columns:
