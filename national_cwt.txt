@@ -1,0 +1,25 @@
+---
+- !ruby/object:NdrImport::Table
+  canonical_name: two_week_wait_from_gp_urgent_referral_to_first_consultant_appointment
+  filename_pattern: !ruby/regexp /.*/i
+  tablename_pattern: !ruby/regexp /Data/i
+  header_lines: 4
+  footer_lines: 0
+  klass: MongoDbRecord
+  columns:
+  - column: monthly
+    mappings:
+    - field: monthly
+      format: '%Y-%m-%d'
+  - column: total
+    mappings:
+    - field: total
+  - column: within standard
+    mappings:
+    - field: withinstandard
+  - column: outside standard
+    mappings:
+    - field: outsidestandard
+  - column: performance (%)
+    mappings:
+    - field: performance_percentage
