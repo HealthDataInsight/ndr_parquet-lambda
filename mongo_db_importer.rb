@@ -1,7 +1,4 @@
 require 'ndr_import'
-require 'ndr_import/table'
-require 'ndr_import/non_tabular/table'
-require 'ndr_import/file/registry'
 require 'ndr_import/universal_importer_helper'
 require 'mongo'
 
