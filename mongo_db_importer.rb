@@ -2,13 +2,6 @@ require 'ndr_import'
 require 'ndr_import/universal_importer_helper'
 require 'mongo'
 
-# All files are safe!
-class SafeFile
-  def self.verify(*_args)
-    true
-  end
-end
-
 # Reads file using NdrImport ETL logic and loads in Mongodb
 class MongoDbImporter
   include NdrImport::UniversalImporterHelper
@@ -23,7 +16,7 @@ class MongoDbImporter
 
   def load
     record_count = 0
-    extract(@filename).each do |table, rows|
+    extract(@filename, unzip_path).each do |table, rows|
       collection = @client[table.canonical_name.to_sym]
       table.transform(rows).each_slice(50) do |records|
         docs = records.map { |(_klass, fields, _index)| fields }
@@ -36,24 +29,13 @@ class MongoDbImporter
 
   private
 
-  def extract(source_file, &block)
-    return enum_for(:extract, source_file) unless block
-
-    files = NdrImport::File::Registry.files(source_file)
-    files.each do |filename|
-      # now at the individual file level, can we find the table mapping?
-      table_mapping = get_table_mapping(filename, nil)
-
-      tables = NdrImport::File::Registry.tables(filename,
-                                                table_mapping.try(:format),
-                                                nil)
-      yield_tables_and_their_content(filename, tables, &block)
-    end
-  end
-
   def ensure_all_mappings_are_tables
     return if @table_mappings.all? { |table| table.is_a?(NdrImport::Table) }
     raise 'Mappings must be inherit from NdrImport::Table'
+  end
+
+  def unzip_path
+    @unzip_path ||= SafePath.new('unzip_path')
   end
 
   def get_notifier(_value)

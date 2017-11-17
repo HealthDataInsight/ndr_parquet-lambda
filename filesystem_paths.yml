@@ -1,0 +1,13 @@
+# This allows us different filesystem paths for different platforms
+--- 
+? !ruby/regexp /(darwin|linux)/
+: 
+  gist_root:
+    root: <%= File.expand_path(File.join('.')) %>
+    prms:
+      - r
+  unzip_path:
+    root: <%= File.expand_path(File.join('.', 'tmp')) %>
+    prms:
+      - r
+      - w
