@@ -9,6 +9,13 @@ class SafeFile
   end
 end
 
+# All paths are safe!
+class SafePath
+  def self.verify(*_args)
+    true
+  end
+end
+
 # Reads file using NdrImport ETL logic and loads in Mongodb
 class MongoDbImporter
   include NdrImport::UniversalImporterHelper
