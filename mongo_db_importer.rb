@@ -9,13 +9,6 @@ class SafeFile
   end
 end
 
-# All paths are safe!
-class SafePath
-  def self.verify(*_args)
-    true
-  end
-end
-
 # Reads file using NdrImport ETL logic and loads in Mongodb
 class MongoDbImporter
   include NdrImport::UniversalImporterHelper
@@ -23,23 +16,22 @@ class MongoDbImporter
   def initialize(filename, table_mappings)
     @filename = filename
     @table_mappings = YAML.load_file table_mappings
+    @client = Mongo::Client.new(['127.0.0.1:27017'], database: 'test')
+
+    ensure_all_mappings_are_tables
   end
 
   def load
-    ensure_all_mappings_are_tables
-
-    client = Mongo::Client.new(['127.0.0.1:27017'], database: 'test')
-    total = 0
+    record_count = 0
     extract(@filename).each do |table, rows|
-      collection = client[table.canonical_name.to_sym]
+      collection = @client[table.canonical_name.to_sym]
       table.transform(rows).each_slice(50) do |records|
         docs = records.map { |(_klass, fields, _index)| fields }
         result = collection.insert_many(docs)
-        puts "Inserted #{result.inserted_count}"
-        total += result.inserted_count
+        record_count += result.inserted_count
       end
     end
-    puts "Inserted #{total} records in total"
+    puts "Inserted #{record_count} records in total"
   end
 
   private
