@@ -1,6 +1,7 @@
 ---
 - !ruby/object:NdrImport::Table
-  canonical_name: two_week_wait_from_gp_urgent_referral_to_first_consultant_appointment
+  # canonical_name: two_week_wait_from_gp_urgent_referral_to_first_consultant_appointment
+  canonical_name: two_week_wait
   filename_pattern: !ruby/regexp /.*/i
   tablename_pattern: !ruby/regexp /Data/i
   header_lines: 1
