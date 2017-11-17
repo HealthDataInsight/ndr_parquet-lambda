@@ -22,9 +22,9 @@ class MongoDbImporter
     ensure_all_mappings_are_tables
 
     client = Mongo::Client.new(['127.0.0.1:27017'], database: 'test')
-    collection = client[:cwts]
     total = 0
     extract(@filename).each do |table, rows|
+      collection = client[table.canonical_name.to_sym]
       table.transform(rows).each_slice(50) do |records|
         docs = records.map { |(_klass, fields, _index)| fields }
         result = collection.insert_many(docs)
