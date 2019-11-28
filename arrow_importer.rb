@@ -1,28 +1,33 @@
 require 'ndr_import'
 require 'ndr_import/universal_importer_helper'
-require 'mongo'
+require 'parquet'
 
 # Reads file using NdrImport ETL logic and loads in Mongodb
-class MongoDbImporter
+class ArrowImporter
   include NdrImport::UniversalImporterHelper
 
   def initialize(filename, table_mappings)
     @filename = filename
     @table_mappings = YAML.load_file table_mappings
-    @client = Mongo::Client.new(['127.0.0.1:27017'], database: 'test')
 
     ensure_all_mappings_are_tables
   end
 
   def load
     record_count = 0
-    extract(@filename, unzip_path).each do |table, rows|
-      collection = @client[table.canonical_name.to_sym]
+    extract(@filename).each do |table, rows|
+      docs = []
       table.transform(rows).each_slice(50) do |records|
-        docs = records.map { |(_klass, fields, _index)| fields }
-        result = collection.insert_many(docs)
-        record_count += result.inserted_count
+        rawtexts = records.map { |(_klass, fields, _index)| fields[:rawtext] }
+        docs.concat(rawtexts)
+        record_count += rawtexts.count
       end
+
+      fieldnames = docs.first.keys
+      schema = Arrow::Schema.new(fieldnames.map { |fieldname| Arrow::Field.new(fieldname, :string) })
+      
+      arrow_table = Arrow::Table.new(schema, docs.map(&:values))
+      arrow_table.save("#{@filename}.parquet")
     end
     puts "Inserted #{record_count} records in total"
   end
@@ -40,4 +45,4 @@ class MongoDbImporter
 
   def get_notifier(_value)
   end
-end # class MongoDbImporter
+end
