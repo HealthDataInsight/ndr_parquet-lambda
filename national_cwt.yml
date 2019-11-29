@@ -15,9 +15,11 @@
     mappings:
     - field: total
   - column: within standard
+    rawtext_name: within_standard
     mappings:
     - field: withinstandard
   - column: outside standard
+    rawtext_name: outside_standard
     mappings:
     - field: outsidestandard
   - column: performance (%)
