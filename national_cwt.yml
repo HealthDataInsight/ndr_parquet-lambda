@@ -5,7 +5,7 @@
   tablename_pattern: !ruby/regexp /Data/i
   header_lines: 1
   footer_lines: 0
-  klass: MongoDbRecord
+  klass: Hash
   columns:
   - column: monthly
     mappings:
@@ -21,5 +21,6 @@
     mappings:
     - field: outsidestandard
   - column: performance (%)
+    rawtext_name: performance_percentage
     mappings:
     - field: performance_percentage
