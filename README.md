@@ -12,3 +12,8 @@ and then execute:
 
     $ bundle install
 
+## Usage
+
+To convert the sample CWT spreadsheet `cwt.xlsx` to parquet format, using the `national_cwt.yml` mapping file, execute:
+
+    $ ruby import.rb
