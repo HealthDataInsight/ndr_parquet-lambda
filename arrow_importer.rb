@@ -139,8 +139,8 @@ class ArrowImporter
       case type
       when :int32
         Integer(value)
-      # # when :boolean
-      # #   ActiveRecord::Type::Boolean.new.cast(value)
+      when :boolean
+        ActiveRecord::Type::Boolean.new.cast(value)
       when :string
         value.to_s
       else
