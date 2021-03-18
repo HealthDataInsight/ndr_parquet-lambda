@@ -1,0 +1,107 @@
+---
+- !ruby/object:NdrImport::Table
+  canonical_name: two_week_wait
+  filename_pattern: !ruby/regexp /.*/i
+  tablename_pattern: !ruby/regexp /Backsheet/i
+  header_lines: 1
+  footer_lines: 0
+  # klass: Hash
+  columns:
+  - column: SQU03_5_3_1:N
+    # rawtext_name: SQU03_5_3_1
+    klass:
+    - First#1
+    mappings:
+    - field: Field1
+      arrow_data_type: :int32
+  - column: SQU03_5_3_2:N
+    # rawtext_name: SQU03_5_3_2
+    klass:
+    - First#1
+    mappings:
+    - field: Field2
+      arrow_data_type: :int32
+  - column: SQU03_6_2_1:N
+    # rawtext_name: SQU03_6_2_1
+    klass:
+    - First#1
+    mappings:
+    - field: Field3
+      arrow_data_type: :int32
+  - column: SQU03_6_2_2:N
+    # rawtext_name: SQU03_6_2_2
+    klass:
+    - First#1
+    mappings:
+    - field: Field4
+      arrow_data_type: :int32
+  - column: K1n:N
+    # rawtext_name: K1N
+    klass:
+    - First#1
+    mappings:
+    - field: Field5
+  - column: K1m:N
+    # rawtext_name: K1M
+    klass:
+    - First#1
+    - Second#1
+    mappings:
+    - field: Field6
+  - column: K150:N
+    # rawtext_name: K150
+    klass:
+    - First#1
+    - Second#1
+    mappings:
+    - field: Field7
+  - column: K190:N
+    # rawtext_name: K190
+    klass:
+    - First#1
+    - Second#1
+    mappings:
+    - field: Field8
+  - column: F1n:N
+    # rawtext_name: F1N
+    klass:
+    - First#1
+    - Second#1
+    mappings:
+    - field: Field9
+  - column: F1t:N
+    # rawtext_name: F1T
+    klass:
+    - First#1
+    - Second#1
+    mappings:
+    - field: Field10
+  - column: F1m:N
+    # rawtext_name: F1M
+    klass:
+    - Second#1
+    mappings:
+    - field: Field11
+  - column: F190:N
+    # rawtext_name: F190
+    klass:
+    - Second#1
+    mappings:
+    - field: Field12
+  - column: P1b:N
+    # rawtext_name: P1B
+    klass:
+    # - First#1
+    # - First#2
+    - Second#1
+    mappings:
+    - field: Field13
+    # - field: Field13
+    #   arrow_data_type: :boolean
+  - column: P1n:N
+    # rawtext_name: P1N
+    klass:
+    - First#2
+    - Second#1
+    mappings:
+    - field: Field14
