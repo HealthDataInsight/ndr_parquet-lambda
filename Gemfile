@@ -4,5 +4,5 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem "ndr_import"
+gem "ndr_import", git: 'https://github.com/timgentry/ndr_import.git', branch: 'feature/filename_column'
 gem "red-parquet"

@@ -7,6 +7,12 @@
   footer_lines: 0
   klass: Hash
   columns:
+  - column: :filename
+    mappings:
+    - field: providercode
+      replace:
+      - ? !ruby/regexp /_Collection-.*-20.*\.xlsm\z/
+        : ''
   - column: SQU03_5_3_1:N
     mappings:
     - field: SQU03_5_3_1
