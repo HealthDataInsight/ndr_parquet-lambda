@@ -14,6 +14,6 @@ and then execute:
 
 ## Usage
 
-To convert the sample CWT spreadsheet `cwt.xlsx` to parquet format, using the `national_cwt.yml` mapping file, execute:
+To convert the sample collection spreadsheet `ABC_Collection-June-2020_03.xlsm` to parquet format, using the `national_collection.yml` mapping file, execute:
 
     $ ruby import.rb
