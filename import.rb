@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'bundler/setup'
 require_relative 'arrow_importer'
 
 # Configure SafePath
