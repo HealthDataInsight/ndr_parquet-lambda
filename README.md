@@ -12,8 +12,22 @@ and then execute:
 
     $ bundle install
 
+### AWS Linux
+
+To make the AWS Linux docker container with Apache Arrow, execute:
+
+    $ make image
+
+and then execute:
+
+    $ make install
+
 ## Usage
 
 To convert the sample collection spreadsheet `ABC_Collection-June-2020_03.xlsm` to parquet format, using the `national_collection.yml` mapping file, execute:
 
     $ ruby import.rb
+
+or to convert the spreadsheet in the docker container, execute:
+
+    $ make import
