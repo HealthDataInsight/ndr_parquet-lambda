@@ -1,11 +1,11 @@
 require 'rubygems'
 require 'bundler/setup'
-require_relative 'arrow_importer'
+require 'ndr_parquet_generator'
 
 # Configure SafePath
 SafePath.configure!(File.join('.', 'filesystem_paths.yml'))
 
 filename = SafePath.new('gist_root').join('ABC_Collection-June-2020_03.xlsm')
-table_mappings = 'national_collection.yml'
-importer = ArrowImporter.new(filename, table_mappings)
+table_mappings = SafePath.new('gist_root').join('national_collection.yml')
+importer = NdrParquetGenerator.new(filename, table_mappings)
 importer.load
