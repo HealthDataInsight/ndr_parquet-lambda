@@ -1,6 +1,6 @@
 # ndr_import-parquet-example
 
-Based on [Ollie Tulloch](https://github.com/ollietulloch)'s boilerplate MongoDB example, this demonstrates the generation of a parquet file using [ndr_import](https://github.com/PublicHealthEngland/ndr_import) and [Apache Arrow](https://arrow.apache.org).
+This is a proof of concept AWS Lambda, using [ndr_parquet_generator](https://github.com/timgentry/ndr_parquet_generator) to generate parquet files from [numerous filetypes](https://github.com/publichealthengland/ndr_import#ndrimport---).
 
 ## Installation
 
