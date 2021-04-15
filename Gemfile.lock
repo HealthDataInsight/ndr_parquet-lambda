@@ -19,11 +19,12 @@ GIT
       spreadsheet (= 1.2.6)
 
 GIT
-  remote: https://github.com/timgentry/ndr_parquet_generator
-  revision: b18f99a33c91c0f4849ca427996bf62a2d9bc7d4
+  remote: https://github.com/timgentry/ndr_parquet
+  revision: b26588a9dd4e1500c85240bbd549955f97281c00
+  ref: b26588a
   branch: main
   specs:
-    ndr_parquet_generator (0.1.0)
+    ndr_parquet (0.1.0)
       ndr_import
       red-parquet
 
@@ -131,7 +132,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3 (~> 1)
   ndr_import!
-  ndr_parquet_generator!
+  ndr_parquet!
   rake
   red-parquet
 

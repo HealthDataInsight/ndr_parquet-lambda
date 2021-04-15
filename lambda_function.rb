@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'ndr_parquet_generator'
+require 'ndr_parquet'
 require_relative 'lib/ndr_parquet_lambda'
 require_relative 'lib/safe_dir'
 
@@ -25,7 +25,7 @@ def lambda_handler(event:, context:)
     safe_input_path = npl.get_object(input_bucket, object_key)
 
     # Generate the parquet file(s)
-    generator = NdrParquetGenerator.new(safe_input_path, table_mappings, safe_dir)
+    generator = NdrParquet::Generator.new(safe_input_path, table_mappings, safe_dir)
     generator.load
 
     results = []
