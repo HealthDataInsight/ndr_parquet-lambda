@@ -31,3 +31,15 @@ To convert the sample collection spreadsheet `ABC_Collection-June-2020_03.xlsm` 
 or to convert the spreadsheet in the docker container, execute:
 
     $ make import
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/timgentry/ndr_import-parquet-example. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/timgentry/ndr_import-parquet-example/blob/main/CODE_OF_CONDUCT.md).
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Code of Conduct
+
+Everyone interacting in the NdrParquet::Generator project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/timgentry/ndr_import-parquet-example/blob/main/CODE_OF_CONDUCT.md).
