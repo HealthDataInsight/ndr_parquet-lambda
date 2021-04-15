@@ -15,12 +15,11 @@ test:
 
 zip:
 	rm -f deploy.zip
-	zip -q -r deploy.zip . -x .git/\*
+	zip -q -r deploy.zip . -x .git/\* -x test/\*
 
 clean:
 	rm -rf .bundle/
 	rm -rf vendor/
-	rm -rf lib/
 
 # Commands that start with underscore are run *inside* the container.
 
@@ -34,4 +33,4 @@ _import:
 	ruby import.rb
 
 _test:
-	ruby -e "require 'handler'; puts main(event: nil, context: nil)"
+	ruby -e "require 'lambda_function'; puts lambda_handler(event: nil, context: nil)"

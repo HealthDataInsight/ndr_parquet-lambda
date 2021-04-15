@@ -1,3 +1,4 @@
+<% require 'tmpdir' %>
 # This allows us different filesystem paths for different platforms
 --- 
 ? !ruby/regexp /(darwin|linux)/
@@ -6,8 +7,10 @@
     root: <%= File.expand_path(File.join('.')) %>
     prms:
       - r
-  unzip_path:
-    root: <%= File.expand_path(File.join('.', 'tmp')) %>
+  tmpdir: &tmpdir
+    root: <%= Dir.tmpdir %>
     prms:
       - r
       - w
+  unzip_path:
+    <<: *tmpdir

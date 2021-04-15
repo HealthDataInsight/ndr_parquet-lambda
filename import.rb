@@ -1,11 +1,14 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'ndr_parquet_generator'
+require 'json'
+require_relative 'lambda_function'
 
-# Configure SafePath
-SafePath.configure!(File.join('.', 'filesystem_paths.yml'))
+event = {
+  input_bucket: 'ruby-etl-lambda-inbox',
+  output_bucket: 'ruby-etl-lambda-outbox',
+  object_key: 'ABC_Collection-June-2020_03.xlsm',
+  mappings: File.open('test/resources/national_collection.yml', 'r').read
+}
+event_json = JSON.generate(event)
 
-filename = SafePath.new('gist_root').join('ABC_Collection-June-2020_03.xlsm')
-table_mappings = SafePath.new('gist_root').join('national_collection.yml')
-importer = NdrParquetGenerator.new(filename, table_mappings)
-importer.load
+puts event_json
+puts
+puts lambda_handler(event: JSON.parse(event_json), context: nil)
