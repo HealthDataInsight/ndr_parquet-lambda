@@ -2,6 +2,8 @@ require 'aws-sdk-s3'
 require 'pathname'
 
 module NdrParquet
+  # This class enables NdrParquet to run as a lamdba by materialising mappings
+  # and copying file from/to input/output S3 buckets.
   class Lambda
     def initialize(safe_dir:)
       @safe_dir = safe_dir
@@ -29,25 +31,21 @@ module NdrParquet
 
     def put_object(bucket, path)
       key = path.relative_path_from(@safe_dir).to_s
+      response = s3.put_object(body: File.open(path, 'r'), bucket: bucket, key: key)
 
-      response = s3.put_object(
-        body: File.open(path, 'r'),
+      {
         bucket: bucket,
-        key: key
-      )
-      return {
-        bucket: bucket,
-        etag: response.etag,
         key: key,
-        success: !!response.etag
+        etag: response.etag,
+        success: !response.etag.nil?
       }
-      rescue StandardError => e
-        return {
-          bucket: bucket,
-          key: key,
-          message: e.message,
-          success: false
-        }
+    rescue StandardError => e
+      {
+        bucket: bucket,
+        key: key,
+        message: e.message,
+        success: false
+      }
     end
 
     private

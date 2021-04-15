@@ -14,13 +14,13 @@ def lambda_handler(event:, context:)
   output_bucket = event['output_bucket']
   object_key = event['object_key']
   mappings = event['mappings']
-  
+
   SafeDir.mktmpdir do |safe_dir|
     npl = NdrParquet::Lambda.new(safe_dir: safe_dir)
 
     # Create a temporary copy of the mappings
     table_mappings = npl.materialise_mappings(mappings)
-    
+
     # Create a temporary copy of the S3 file
     safe_input_path = npl.get_object(input_bucket, object_key)
 
