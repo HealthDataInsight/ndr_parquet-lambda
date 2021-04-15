@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 require 'ndr_parquet'
-require_relative 'lib/ndr_parquet_lambda'
+require_relative 'lib/ndr_parquet/lambda'
 require_relative 'lib/safe_dir'
 
 # Configure SafePath
@@ -16,7 +16,7 @@ def lambda_handler(event:, context:)
   mappings = event['mappings']
   
   SafeDir.mktmpdir do |safe_dir|
-    npl = NdrParquetLambda.new(safe_dir: safe_dir)
+    npl = NdrParquet::Lambda.new(safe_dir: safe_dir)
 
     # Create a temporary copy of the mappings
     table_mappings = npl.materialise_mappings(mappings)
