@@ -8,6 +8,9 @@ FROM lambci/lambda:build-ruby2.7
 # Install ruby
 # RUN amazon-linux-extras install -y ruby2.6
 
+# Update all existing packages
+RUN yum update -y
+
 # Optimize compilation for size to try and stay below Lambda's 250 MB limit
 # This reduces filesize by over 90% (!) compared to the default -O2
 ENV CFLAGS "-Os"
