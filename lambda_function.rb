@@ -36,7 +36,14 @@ class Handler
         results << npl.put_object(output_bucket, path)
       end
 
-      return results
+      return {
+        versions: {
+          ndr_import: NdrImport::VERSION,
+          ndr_parquet: NdrParquet::VERSION,
+          ruby: RUBY_VERSION
+        },
+        results: results
+      }
     end
   end
 end
