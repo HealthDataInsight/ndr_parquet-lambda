@@ -134,7 +134,6 @@ DEPENDENCIES
   ndr_import!
   ndr_parquet!
   rake
-  red-parquet
 
 BUNDLED WITH
    2.2.15
