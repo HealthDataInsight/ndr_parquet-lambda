@@ -11,4 +11,4 @@ event_json = JSON.generate(event)
 
 puts event_json
 puts
-puts lambda_handler(event: JSON.parse(event_json), context: nil)
+puts Handler.process(event: JSON.parse(event_json), context: nil)
