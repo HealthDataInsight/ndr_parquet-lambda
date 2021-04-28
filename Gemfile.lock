@@ -20,13 +20,14 @@ GIT
 
 GIT
   remote: https://github.com/timgentry/ndr_parquet
-  revision: b26588a9dd4e1500c85240bbd549955f97281c00
-  ref: b26588a
+  revision: ac7bf809cc6636e1a541c3ac5cdbe6dcc5a542aa
+  ref: ac7bf80
   branch: main
   specs:
     ndr_parquet (0.1.0)
       ndr_import
-      red-parquet
+      rake
+      red-parquet (~> 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -66,13 +67,13 @@ GEM
       nokogiri (~> 1.10, >= 1.10.4)
       rubyzip (~> 2.0)
     extpp (0.0.9)
-    gio2 (3.4.3)
-      gobject-introspection (= 3.4.3)
-    glib2 (3.4.3)
+    gio2 (3.4.4)
+      gobject-introspection (= 3.4.4)
+    glib2 (3.4.4)
       native-package-installer (>= 1.0.3)
       pkg-config (>= 1.3.5)
-    gobject-introspection (3.4.3)
-      glib2 (= 3.4.3)
+    gobject-introspection (3.4.4)
+      glib2 (= 3.4.4)
     hashery (2.1.2)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
@@ -97,7 +98,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pkg-config (1.4.5)
+    pkg-config (1.4.6)
     racc (1.5.2)
     rake (13.0.3)
     red-arrow (3.0.0)
@@ -133,7 +134,6 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1)
   ndr_import!
   ndr_parquet!
-  rake
 
 BUNDLED WITH
    2.2.15

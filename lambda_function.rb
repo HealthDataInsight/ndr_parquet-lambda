@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'lambda'
 require 'ndr_parquet'
 require 'safe_dir'
 
@@ -17,13 +16,13 @@ class Handler
     mappings = event['mappings']
 
     SafeDir.mktmpdir do |safe_dir|
-      npl = NdrParquet::Lambda.new(safe_dir: safe_dir)
+      s3_wrapper = NdrParquet::S3Wrapper.new(safe_dir: safe_dir)
 
       # Create a temporary copy of the mappings
-      table_mappings = npl.materialise_mappings(mappings)
+      table_mappings = s3_wrapper.materialise_mappings(mappings)
 
       # Create a temporary copy of the S3 file
-      safe_input_path = npl.get_object(input_bucket, object_key)
+      safe_input_path = s3_wrapper.get_object(input_bucket, object_key)
 
       # Generate the parquet file(s)
       generator = NdrParquet::Generator.new(safe_input_path, table_mappings, safe_dir)
@@ -33,7 +32,7 @@ class Handler
 
       # Put the output files in the output S3 bucket
       generator.output_files.each do |path|
-        results << npl.put_object(output_bucket, path)
+        results << s3_wrapper.put_object(output_bucket, path)
       end
 
       return {
