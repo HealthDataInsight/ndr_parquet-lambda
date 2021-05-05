@@ -20,8 +20,8 @@ GIT
 
 GIT
   remote: https://github.com/timgentry/ndr_parquet
-  revision: ac7bf809cc6636e1a541c3ac5cdbe6dcc5a542aa
-  ref: ac7bf80
+  revision: eac9fc49f294468239710f09b89cb342b75f300c
+  ref: eac9fc4
   branch: main
   specs:
     ndr_parquet (0.1.0)
