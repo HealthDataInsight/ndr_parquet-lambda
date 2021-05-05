@@ -1,6 +1,6 @@
-# ndr_import-parquet-example
+# ndr_parquet-lambda
 
-This is a proof of concept AWS Lambda, using [ndr_parquet](https://github.com/timgentry/ndr_parquet) to generate parquet files from [numerous filetypes](https://github.com/publichealthengland/ndr_import#ndrimport---).
+This is an image-based AWS Lambda, using [ndr_parquet](https://github.com/timgentry/ndr_parquet) to generate parquet files from [numerous filetypes](https://github.com/publichealthengland/ndr_import#ndrimport---).
 
 ## Installation
 
