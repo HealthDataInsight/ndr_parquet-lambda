@@ -21,7 +21,6 @@ RUN yum install -y clang git-core && \
 
 # Copy function code
 COPY filesystem_paths.yml .
-COPY lambda.rb .
 COPY lambda_function.rb .
 COPY safe_dir.rb .
 
