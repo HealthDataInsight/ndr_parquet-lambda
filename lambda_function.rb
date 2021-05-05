@@ -7,7 +7,9 @@ require 'safe_dir'
 # Configure SafePath
 SafePath.configure!(File.join('.', 'filesystem_paths.yml'))
 
-class Handler
+class LambdaFunction
+  VERSION = '0.1.0'
+
   def self.process(event:, context:)
     # Set object details
     t0 = Time.current
@@ -53,6 +55,7 @@ class Handler
           total: t3 - t0
         },
         versions: {
+          lambda_function: LambdaFunction::VERSION,
           ndr_import: NdrImport::VERSION,
           ndr_parquet: NdrParquet::VERSION,
           ruby: RUBY_VERSION

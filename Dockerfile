@@ -24,6 +24,6 @@ COPY filesystem_paths.yml .
 COPY lambda_function.rb .
 COPY safe_dir.rb .
 
-CMD ["lambda_function.Handler.process"]
+CMD ["lambda_function.LambdaFunction.process"]
 # ENTRYPOINT "/bin/bash"
 # CMD
