@@ -20,11 +20,11 @@ GIT
 
 GIT
   remote: https://github.com/timgentry/ndr_parquet
-  revision: eac9fc49f294468239710f09b89cb342b75f300c
-  ref: eac9fc4
+  revision: bddccfc8e01ef8da2a684e18de31d0e594bbe8ba
   branch: main
+  tag: v1.0.0-rc.1
   specs:
-    ndr_parquet (0.1.0)
+    ndr_parquet (1.0.0.pre.rc.1)
       ndr_import
       rake
       red-parquet (~> 3.0)

@@ -6,4 +6,4 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'aws-sdk-s3', '~> 1'
 gem 'ndr_import', git: 'https://github.com/timgentry/ndr_import', branch: 'feature/filename_column'
-gem 'ndr_parquet', git: 'https://github.com/timgentry/ndr_parquet', branch: 'main', ref: 'eac9fc4'
+gem 'ndr_parquet', git: 'https://github.com/timgentry/ndr_parquet', branch: 'main', tag: 'v1.0.0-rc.1'
