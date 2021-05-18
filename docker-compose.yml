@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+    localstack:
+        image: localstack/localstack:0.11.2
+        environment:
+            - DATA_DIR=/tmp/localstack/data
+            - DEFAULT_REGION=eu-west-2
+            - DOCKER_HOST=unix:///var/run/docker.sock
+            - PORT_WEB_UI=8090
+            - SERVICES=s3,dynamodb,ssm,sqs
+#            - DEBUG=1 # Uncomment to enable debug logging in localstack
+        restart: always
+        ports:
+            - "4566:4566"  # Entrypoint Service
+            - "4572:4572"  # S3 direct access port left open as hadoop fails when pointing to 4566
+            - "4576:4576"  # SQS direct access port left open for lambda testing
+        command: start
+        volumes:
+          - /tmp/localstack:/tmp/localstack
+          - /var/run/docker.sock:/var/run/docker.sock
+    lambda:
+        image: lambda-ruby2.7
+        ports:
+            - "8080:8080"
+        depends_on:
+            - localstack
+        volumes:
+          - .:/var/task
