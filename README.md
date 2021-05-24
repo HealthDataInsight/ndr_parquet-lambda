@@ -4,31 +4,31 @@ This is an image-based AWS Lambda, using [ndr_parquet](https://github.com/timgen
 
 ## Installation
 
-To install Apache Arrow on a mac using homebrew, execute:
+To install Apache Arrow on a mac using homebrew, run:
 
     $ brew install apache-arrow
 
-and then execute:
+and then run:
 
     $ bundle install
 
 ### AWS Linux
 
-To make the AWS Linux docker container with Apache Arrow, execute:
+To make the AWS Linux docker container with Apache Arrow, run:
 
     $ make image
 
-and then execute:
+and then run:
 
     $ make install
 
 ## Usage
 
-To convert the sample collection spreadsheet `ABC_Collection-June-2020_03.xlsm` to parquet format, using the `national_collection.yml` mapping file, execute:
+To convert the sample collection spreadsheet `ABC_Collection-June-2020_03.xlsm` to parquet format, using the `national_collection.yml` mapping file, run:
 
     $ ruby import.rb
 
-or to convert the spreadsheet in the docker container, execute:
+or to convert the spreadsheet in the docker container, run:
 
     $ make import
 
