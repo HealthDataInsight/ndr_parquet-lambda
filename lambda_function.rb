@@ -1,23 +1,34 @@
 require 'rubygems'
 require 'bundler/setup'
 
+require 'base64'
+require 'json'
 require 'ndr_parquet'
-require 'safe_dir'
+require_relative 'safe_dir'
 
 # Configure SafePath
 SafePath.configure!(File.join('.', 'filesystem_paths.yml'))
 
+# Main class containing the entry point class method LambdaFunction.process
 class LambdaFunction
-  VERSION = '0.1.0'
+  VERSION = '0.1.0'.freeze
+
+  def self.data_from_event(event)
+    return JSON.parse(Base64.decode64(event['body'])) if event.include?('body')
+
+    event
+  end
 
   def self.process(event:, context:)
     # Set object details
     t0 = Time.current
 
-    input_bucket = event['input_bucket']
-    output_bucket = event['output_bucket']
-    object_key = event['object_key']
-    mappings = event['mappings']
+    data = data_from_event(event)
+
+    input_bucket = data['input_bucket']
+    output_bucket = data['output_bucket']
+    object_key = data['object_key']
+    mappings = data['mappings']
 
     SafeDir.mktmpdir do |safe_dir|
       s3_wrapper = NdrParquet::S3Wrapper.new(safe_dir: safe_dir)
