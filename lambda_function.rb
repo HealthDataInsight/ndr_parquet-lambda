@@ -69,6 +69,7 @@ class LambdaFunction
           lambda_function: LambdaFunction::VERSION,
           ndr_import: NdrImport::VERSION,
           ndr_parquet: NdrParquet::VERSION,
+          parquet: "#{Parquet::Version::MAJOR}.#{Parquet::Version::MINOR}.#{Parquet::Version::MICRO}",
           ruby: RUBY_VERSION
         }
       }
