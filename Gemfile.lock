@@ -77,7 +77,7 @@ GEM
     hashery (2.1.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     mini_portile2 (2.6.1)
     minitest (5.15.0)
     msworddoc-extractor (0.2.0)
