@@ -80,7 +80,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jmespath (1.6.1)
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.1)
     minitest (5.17.0)
     msworddoc-extractor (0.2.0)
       ruby-ole
@@ -88,7 +88,7 @@ GEM
     ndr_support (5.9.3)
       activerecord (>= 6.0.0, < 7.1)
       activesupport (>= 6.0.0, < 7.1)
-    nokogiri (1.13.6)
+    nokogiri (1.14.0)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     ooxml_decrypt (1.0.0)
@@ -101,7 +101,7 @@ GEM
       ruby-rc4
       ttfunk
     pkg-config (1.4.7)
-    racc (1.6.0)
+    racc (1.6.2)
     rake (13.0.6)
     red-arrow (6.0.1)
       bigdecimal (>= 2.0.3)
